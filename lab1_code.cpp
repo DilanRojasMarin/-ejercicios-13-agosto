@@ -2,10 +2,10 @@
 *  Informatica 2 - 2018_2
 *  Prof: Juan Camilo Correa Chica
 *  Fecha: Agosto 6/2018 - Agosto 13/2018
-*  Plazo máximo para enviar enlace para clonar el repositorio: Agosto 13/2018 - 09:29pm
-*  Estudiante1: Nombres y apellidos completos
+*  Plazo máximo para enviar enlace para clonar el repositorio: Agosto 14/2018 - 10:00 AM
+*  Estudiante1:DILAN ROJAS MARIN
 *  Estudiante2: Nombres y apellidos completos (Opcional, puede trabajar individualmente)
-*  Fecha del ultimo Commit en GitHub: Agregue la fecha y hora del ultimo Commit (aproximada)
+*  Fecha del ultimo Commit en GitHub: 14/08/2018; 9:50 AM
 *
 
 *  Parte final: 
@@ -38,7 +38,7 @@
 *				arreglos constantes de tipo char y debe retornar un valor booleano que indica si los arreglos
 *				ingresados son anagramas o no. Tips: 1. En caso de ser necesario, puede calcular la longitud de los
 *				arreglos de entrada con la funcion strlen (http://www.cplusplus.com/reference/cstring/strlen/)
-*				2. Recuerde que para un computador las letras o caracteres tienen una representacion numerica
+  *				2. Recuerde que para un computador las letras o caracteres tienen una representacion numerica
 *				en formato hexadecimal, puede verificarlo aqui: http://www.asciitable.com/ De acuerdo con eso
 *				una forma facil de realizar su tarea podria ser sumando los caracteres de los arreglos y comparando
 *				los resultados de las sumas para ambos arreglos. 3. Podria ser de utilidad ua funcion que convierte
@@ -72,54 +72,107 @@
 #include <ctype.h>
 
 using namespace std;
+//EJERCICIO 4
+int main(void)
+{
+   char s[] = "arroz";
+   char t[] = "zorra";
+   int i;
+   int j;
+   int len;
 
+   len = strlen(s);
+   for (i = 0; s[i] != '\0'; i++){
+      for (j = 0; t[j] != s[i] && j < len; j++)
+         ;
+
+      if (j < len){
+         t[j] = t[len - 1];
+         t[--len] = '\0';
+      }else
+         break;
+   }
+
+   if (i == strlen(s))
+      puts("Son anagramas");
+   else
+      puts("No son anagramas");
+
+   return EXIT_SUCCESS;
+}
+
+
+
+
+
+
+#include <iostream>
+#include <string.h>
+#include <ctype.h>
+
+using namespace std; 
+// EJERCICIO 5
 //Aqui se declaran las variables globales
 char arreglo_desordenado[] = "ugANMBpofJWMQZbbwktcynqidfgroc";
 	
 
 //Aqui se declaran los prototipos de las funciones
+#include<iostream>
+using namespace std;
 
-int main()
-{
-	//Esta funcion es la mas importante del programa
-	//En esta funcion se deben invocar las funciones que 
-	//usted codifique en C++
-	
-	//Declarando una variable local
-	bool verifica_fecha;
-	
-	bool son_anagramas;
-	
-	int index_busqueda = 0;
-	
-	//Aqui puede invocar sus funciones para verficar fecha y anagramas
-	
-	if(verifica_fecha)
-		cout<<"Fecha sin problemas!"<<endl;
-	else
-		cout<<"Fecha presenta errores!"<<endl;
-	
-	if(son_anagramas)
-		cout<<"Los arreglos son anagramas!"<<endl;
-	else
-		cout<<"Los arreglos no son anagramas!"<<endl;
-	
-	//Odenando arreglos
-	cout<<"Arreglo desordenado: "<<arreglo_desordenado<<endl;
-	//Invoque aqui su funcion para ordenar arreglos
-	
-	cout<<"Arreglo ordenado: "<<arreglo_desordenado<<endl;
-	
-	//Buscando una palabra en un arreglo
-	char p_a_buscar[] = "Informatica";
-	char array_busqueda[] = "Bienvenidos a la primera practica del curso de Informatica 2 en el semestre 201_2";
-	//Aqui puede invocar su funcion de busqueda con los parametros p_a_buscar y array_busqueda
-	
-	if(index_busqueda)
-		cout<<"Palabra encontrada en la posicion: "<<index_busqueda<<endl;
-	
-	
-	return 0;
+
+int main(){
+    char arreglo_desordenado[] = "ugANMBpofJWMQZbbwktcynqidfgroc";
+    int i, j;
+    char aux;
+
+    for(i=0;i<30;i++){
+        for(j=0;j<30;j++){
+            if(arreglo_desordenado[j]>arreglo_desordenado[j+1]){
+                aux=arreglo_desordenado[j];
+                arreglo_desordenado[j]=arreglo_desordenado[j+1];
+                arreglo_desordenado[j+1]=aux;
+            }
+        }
+    }
+
+    for(i=0;i<30;i++){
+        cout<<arreglo_desordenado[i]<<endl;
+    }
+
+
+    cin.get();
+    return 0;
 }
+
+
+
+
+
+//EJERCICIO 6
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main(){
+    string cadena;
+    string palabra;
+
+    cout<<"ingrese una frase:"<<endl;
+    getline(cin,cadena);
+
+    cout<<"ingrese una palabra de la frase:"<<endl;
+    getline(cin,palabra);
+
+    if (cadena.find(palabra) != std::string::npos) {
+        std::cout << "la palabra "<<palabra<<" esta contenida" << '\n';
+    }else{
+        cout<<"la palabra no esta contenida"<<endl;
+    }
+
+
+return 0;
+} 
 
 
